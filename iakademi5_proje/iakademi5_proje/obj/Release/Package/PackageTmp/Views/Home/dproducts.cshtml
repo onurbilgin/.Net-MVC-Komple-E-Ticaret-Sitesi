@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "dproducts";
+    Layout = "~/Views/Shared/dafault_layout.cshtml";
+}
+
+<!-- ENYENİ product area start -->
+<div class="mobile-products-area furniture-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <h3 class="sp-module-title">
+                    @*all p title olursa bütün paragraf renklenir*@
+                    <span>ARADIĞINIZ ÜRÜNLER</span>
+                </h3>
+
+                @*  <div class="n-full-products">
+                    <div class="all-p-title">
+                            <h3>YILDIZLI ÜRÜNLER</h3>
+                            </div> *@
+
+
+                <div class="row">
+                    <div class="all-new-p">
+                        <div class="all-new-single singal-p hom-1">
+
+                            @foreach (var item in ViewBag.Urunlers)
+                            {
+                                <!-- SP-SINGLE Product -->
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="sp-single">
+                                        <div class="sp-img-area">
+                                            <img class="first-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <img class="hover-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <div class="quick-view-detail">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")">Detaylar</a>
+                                            </div>
+                                            <div class="sp-label-pro sp-label-pro-hot" style="color:black"><b>% @item.discount</b></div>
+                                        </div>
+                                        <div class="sp-info-area">
+                                            <h2 class="product-name"><a title="@item.productname" href="@Url.Action("detaylar/" +item.productID,"Home")">@item.productname </a></h2>
+                                            @* <div class="product-rating">
+                                                <div class="ratingbox" title="" Rating="3/5">
+                                                    <div style="width:50px" class="stars-orange"></div>
+                                                </div> *@
+                                        </div>
+                                        <p class="all-prices">
+                                            <span class="sp-price main-price">@item.price TL</span>
+                                        </p>
+                                        <div class="sp-button">
+                                            <div class="s-button">
+                                                <a href="@Url.Action("sepeteekle/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle " class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                            </div>
+                                            <div class="s-button">
+                                                <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                            </div>
+                                            <div class="s-button last-b ">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    @*  <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="new-bottom-area">
+                                <div class="banner-home-inner">
+                                    <a href="index.html#">
+                                        <img src="~/Content/img/all-bannars/1.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ENYENİ product area end -->

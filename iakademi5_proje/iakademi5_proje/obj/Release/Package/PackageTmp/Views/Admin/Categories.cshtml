@@ -1,0 +1,92 @@
+﻿@model iakademi5_proje.Models.tbl_Categories
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+
+    IEnumerable<SelectListItem> cl = ViewData["catlist"] as IEnumerable<SelectListItem>;
+}
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet box blue ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Kategori Giriş Formu
+        </div>
+        <div class="tools">
+            <a href="" class="collapse">
+            </a>
+            <a href="#portlet-config" data-toggle="modal" class="config">
+            </a>
+            <a href="" class="reload">
+            </a>
+            <a href="" class="remove">
+            </a>
+        </div>
+    </div>
+    <div class="portlet-body form">
+
+        <form class="form-horizontal" role="form" action="Categories" method="post">
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Kategori Adı</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control input-lg" placeholder="Kategori Adı" name="categoryname" required maxlength="100">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Açıklama</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control" placeholder="Açıklama" name="aciklama" required>
+                    </div>
+                </div>
+                @*<div class="form-group">
+                    <label class="col-md-3 control-label">Small Input</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control input-sm" placeholder="Default Input">
+                    </div>
+                </div>*@
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Kategori Seçiniz</label>
+                    <div class="col-md-9">
+                        @*<select class="form-control input-lg">
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                            <option>Option 4</option>
+                            <option>Option 5</option>
+                        </select>*@
+                        @Html.DropDownList("categoryID", cl, "seçiniz", new { @class = "form-control input-lg" })
+                    </div>
+                </div>
+                @*//<div class="form-group">
+                    <label class="col-md-3 control-label">Default Select</label>
+                    <div class="col-md-9">
+                        <select class="form-control">
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                            <option>Option 4</option>
+                            <option>Option 5</option>
+                        </select>
+                    </div>
+                </div>*@
+                @*<div class="form-group">
+                    <label class="col-md-3 control-label">Small Select</label>
+                    <div class="col-md-9">
+                        <select class="form-control input-sm">
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                            <option>Option 4</option>
+                            <option>Option 5</option>
+                        </select>
+                    </div>
+                </div>*@
+            </div>
+            <div class="form-actions right1">
+                <button type="button" class="btn default">İptal</button>
+                <button type="submit" class="btn green">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->

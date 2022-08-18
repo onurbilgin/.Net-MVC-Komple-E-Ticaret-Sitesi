@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iakademi_projeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="iakademi_projeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_Categories" EntityType="iakademi_projeModel.tbl_Categories" />
+    <EntitySet Name="tbl_Images" EntityType="iakademi_projeModel.tbl_Images" />
+    <EntitySet Name="tbl_Products" EntityType="iakademi_projeModel.tbl_Products" />
+    <EntitySet Name="tbl_Suppliers" EntityType="iakademi_projeModel.tbl_Suppliers" />
+    <EntitySet Name="tbl_Users" EntityType="iakademi_projeModel.tbl_Users" />
+    <EntitySet Name="vw_aktif_urunler" EntityType="iakademi_projeModel.vw_aktif_urunler" />
+    <EntitySet Name="tbl_Orders" EntityType="iakademi_projeModel.tbl_Orders" />
+    <EntitySet Name="vw_siparislerim" EntityType="iakademi_projeModel.vw_siparislerim" />
+    <EntitySet Name="view_arama" EntityType="iakademi_projeModel.view_arama" />
+    <EntitySet Name="tbl_Comments" EntityType="iakademi_projeModel.tbl_Comments" />
+    <EntitySet Name="tbl_Mesaj" EntityType="iakademi_projeModel.tbl_Mesaj" />
+  </EntityContainer>
+  <EntityType Name="tbl_Categories">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Name="categoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="parentID" Type="Int32" />
+    <Property Name="categoryname" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="aktif" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_Images">
+    <Key>
+      <PropertyRef Name="resimID" />
+    </Key>
+    <Property Name="resimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productID" Type="Int32" />
+    <Property Name="resimyolu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="aktif" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_Products">
+    <Key>
+      <PropertyRef Name="productID" />
+    </Key>
+    <Property Name="productID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="productname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="categoryID" Type="Int32" />
+    <Property Name="supplierID" Type="Int32" />
+    <Property Name="stock" Type="Int64" />
+    <Property Name="discount" Type="Int32" />
+    <Property Name="status" Type="Byte" />
+    <Property Name="adddate" Type="DateTime" Precision="3" />
+    <Property Name="keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="desidegeri" Type="Int32" />
+    <Property Name="kdv" Type="Int32" />
+    <Property Name="tiklamasayisi" Type="Int32" />
+    <Property Name="coksatanlar" Type="Int32" />
+    <Property Name="benzer_urunler" Type="Int32" />
+    <Property Name="notlar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="aktif" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_Suppliers">
+    <Key>
+      <PropertyRef Name="supplierID" />
+    </Key>
+    <Property Name="supplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="brandname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="aktif" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_Users">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="parola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="isimsoyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telefon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="faturaadresi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="adminmi" Type="Boolean" />
+    <Property Name="aktif" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="vw_aktif_urunler">
+    <Key>
+      <PropertyRef Name="productID" />
+      <PropertyRef Name="categoryID" />
+      <PropertyRef Name="resimID" />
+    </Key>
+    <Property Name="productID" Type="Int32" Nullable="false" />
+    <Property Name="productname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="productcode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="kdv" Type="Int32" />
+    <Property Name="stock" Type="Int64" />
+    <Property Name="discount" Type="Int32" />
+    <Property Name="status" Type="Byte" />
+    <Property Name="adddate" Type="DateTime" Precision="3" />
+    <Property Name="keywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="desidegeri" Type="Int32" />
+    <Property Name="tiklamasayisi" Type="Int32" />
+    <Property Name="coksatanlar" Type="Int32" />
+    <Property Name="benzer_urunler" Type="Int32" />
+    <Property Name="notlar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="aktif" Type="Boolean" />
+    <Property Name="categoryID" Type="Int32" Nullable="false" />
+    <Property Name="categoryname" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="supplierID" Type="Int32" />
+    <Property Name="brandname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="resimyolu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="resimID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="orderGroupGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="invoiceAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="aktif" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="vw_siparislerim">
+    <Key>
+      <PropertyRef Name="productID" />
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="productID" Type="Int32" Nullable="false" />
+    <Property Name="productname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Precision="11" Scale="2" />
+    <Property Name="kdv" Type="Int32" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="orderGroupGUID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="userID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="view_arama">
+    <Key>
+      <PropertyRef Name="KATEGORI" />
+      <PropertyRef Name="URUN" />
+      <PropertyRef Name="MARKA" />
+    </Key>
+    <Property Name="KATEGORI" Type="Int32" Nullable="false" />
+    <Property Name="URUN" Type="Int32" Nullable="false" />
+    <Property Name="MARKA" Type="Int32" Nullable="false" />
+    <Property Name="ARAMAISMI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Comments">
+    <Key>
+      <PropertyRef Name="yorumID" />
+    </Key>
+    <Property Name="yorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productID" Type="Int32" />
+    <Property Name="comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tbl_Mesaj">
+    <Key>
+      <PropertyRef Name="mesajID" />
+    </Key>
+    <Property Name="mesajID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="konu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

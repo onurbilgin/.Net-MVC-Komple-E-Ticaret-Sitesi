@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "uyeol";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+}
+
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet box green ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Üye Kayıt Formu
+        </div>
+        <div class="tools">
+            <a href="" class="collapse">
+            </a>
+            <a href="#portlet-config" data-toggle="modal" class="config">
+            </a>
+            <a href="" class="reload">
+            </a>
+            <a href="" class="remove">
+            </a>
+        </div>
+    </div>
+    <div class="portlet-body form">
+
+        @*enctype = "multipart/form-date"   ->    resim seçerken gerekli *@
+
+        @using (Html.BeginForm("uyeol", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", @role = "form" }))
+        {
+        <div class="form-body">
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">E-Mail *</label>
+                <div class="col-md-9">
+                    <input type="email" class="form-control input-lg" placeholder="Email" name="email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Şifre </label>
+                <div class="col-md-9">
+                    <input type="password" class="form-control input-lg" placeholder="Parola" name="parola" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">İsim Soyisim *</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="İsim Soyisim" name="isimsoyisim" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Telefon </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Telefon" name="telefon" required onkeypress="return numbersonly(this, event);" maxlength="10">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Fatura Adresi </label>
+                <div class="col-md-9">
+                    <textarea name="faturaadresi" cols="80" rows="5" required></textarea>
+                </div>
+            </div>
+
+            <input type="hidden" name="adminmi" value="true" />
+
+
+        </div>
+            <div class="form-actions right1">
+                <button type="button" class="btn default">İptal</button>
+                <button type="submit" class="btn blue">Kaydet</button>
+            </div>
+
+
+        }
+
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->
+
+<script type="text/javascript">
+
+    function numbersonly(myfield, e, dec) {
+        var key;
+        var keychar;
+
+        if (window.event)
+            key = window.event.keyCode;
+        else if (e)
+            key = e.which;
+        else
+            return true;
+        keychar = String.fromCharCode(key);
+
+        // control keys
+        if ((key == null) || (key == 0) || (key == 8) ||
+            (key == 9) || (key == 13) || (key == 27))
+            return true;
+
+        // numbers
+        else if ((("0123456789").indexOf(keychar) > -1))
+            return true;
+
+        // decimal point jump
+        else if (dec && (keychar == ".")) {
+            myfield.form.elements[dec].focus();
+            alert("Lütfen sadece rakam giriniz.");
+            return false;
+        }
+        else {
+            alert("Lütfen sadece rakam giriniz.");
+            return false;
+        }
+
+    }
+</script>

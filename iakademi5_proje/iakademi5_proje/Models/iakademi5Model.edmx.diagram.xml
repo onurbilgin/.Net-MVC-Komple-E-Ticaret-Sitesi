@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ca66f754aad84960a777d7012d852efe" Name="Diagram1" >
+        <EntityTypeShape EntityType="iakademi_projeModel.tbl_Categories" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="iakademi_projeModel.tbl_Images" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="iakademi_projeModel.tbl_Products" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="iakademi_projeModel.tbl_Suppliers" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="iakademi_projeModel.tbl_Users" Width="1.5" PointX="4.875" PointY="0.75" />
+        <EntityTypeShape EntityType="iakademi_projeModel.vw_aktif_urunler" Width="1.5" PointX="9" PointY="0.75" />
+        <EntityTypeShape EntityType="iakademi_projeModel.tbl_Orders" Width="1.5" PointX="6.875" PointY="0.75" />
+        <EntityTypeShape EntityType="iakademi_projeModel.vw_siparislerim" Width="1.5" PointX="4.875" PointY="3.75" />
+        <EntityTypeShape EntityType="iakademi_projeModel.view_arama" Width="1.5" PointX="7" PointY="3.875" />
+        <EntityTypeShape EntityType="iakademi_projeModel.tbl_Comments" Width="1.5" PointX="10.875" PointY="0.75" />
+        <EntityTypeShape EntityType="iakademi_projeModel.tbl_Mesaj" Width="1.5" PointX="10.875" PointY="2.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

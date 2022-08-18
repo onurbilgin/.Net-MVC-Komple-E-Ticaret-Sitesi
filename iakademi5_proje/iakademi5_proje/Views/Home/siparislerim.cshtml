@@ -1,0 +1,182 @@
+﻿@using iakademi5_proje.Models
+@model List<vw_siparislerim>
+
+@{
+    ViewBag.Title = "siparislerim";
+    Layout = "~/Views/Shared/dafault_layout.cshtml";
+}
+
+<!-- wishlist area start  -->
+<div class="wishlist-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                @*<div class="continue-link">
+                        <a href="cart.html#">Continue Shopping</a>
+                    </div>*@
+
+                <div class="continue-link">
+                    SİPARİŞLERİM
+                </div>
+
+
+                <div class="cart-wrapper table-responsive">
+                    <table class="shop_table cart ">
+                        <thead>
+                            <tr>
+                                <th class="product-name">SİPARİŞ NO</th>
+                                <th class="product-price">TARİH</th>
+                                <th class="product-price">ÜRÜN ADI</th>
+                                <th class="product-price">FİYAT</th>
+                                <th class="product-quantity">ADET</th>
+                                <th class="product-subtotal">TOPLAM FİYAT(KDV DAHİL)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            @*
+                                06072020214013
+                                06072020214013
+                                06072020214013
+                                06072020211234
+                                06072020222127
+                                06072020222127
+                                06072020222307
+                                06072020222307
+                                06072020222451
+                                06072020222451
+                            *@
+
+
+                            @{
+                                string orderGroupGUID = "";
+                                int count = 0;
+                                decimal aratoplam = 0;
+                                decimal kdvdahilyuvarla = 0;
+                                int bastim = 1;
+                            }
+
+
+                            @foreach (var item in Model)
+                                        {
+                                            iakademi_projeEntities db = new iakademi_projeEntities();
+
+                                            if (count == 0)
+                                            {
+                                                orderGroupGUID = item.orderGroupGUID;
+                                            }
+
+                                            if (orderGroupGUID == item.orderGroupGUID)
+                                            {
+                                                count++;
+                                    <tr class="cart_item">
+                                        <td class="remove-product">
+
+                                            @if (bastim == 1)
+                                            {
+                                                @item.orderGroupGUID
+                                            }
+                                        </td>
+
+                                        <td class="product-thumbnail">
+
+                                            @if (bastim == 1)
+                                            {
+                                                @item.OrderDate
+                                            }
+                                        </td>
+
+                                        <td class="product-name">
+                                            <a href="@Url.Action("detaylar/" + item.productID,"Home")">@item.productname</a>
+                                        </td>
+
+                                        <td class="product-price">
+                                            <a href="@Url.Action("detaylar/" + item.productID,"Home")">@item.price</a>
+                                        </td>
+
+
+                                        <td class="product-price">
+                                            <a href="@Url.Action("detaylar/" + item.productID,"Home")">@item.quantity</a>
+                                        </td>
+
+
+                                        @{
+                                            decimal kdvdahil = 0;
+
+                                    kdvdahil = Convert.ToDecimal((((item.kdv * item.price) / 100) + item.price) * item.quantity);
+                                            kdvdahilyuvarla = Math.Round(kdvdahil, 2);
+                                        }
+                                        <td class="product-thumbnail">
+                                            <span class="amount">@kdvdahilyuvarla TL</span>
+                                        </td>
+
+                                    </tr>
+
+                                       aratoplam = Convert.ToDecimal(aratoplam + kdvdahilyuvarla);
+                                            bastim++;
+
+                                    }
+                                    else
+                                    {
+                                    <tr>
+                                        <td class="product-name" style="background-color:black;">
+                                            <a href="">@aratoplam TL</a>
+                                        </td>
+                                    </tr>
+
+                                    //
+                                    <tr class="cart_item">
+                                        <td class="remove-product">
+                                            @item.orderGroupGUID
+                                        </td>
+
+                                        <td class="product-thumbnail">
+                                            @item.OrderDate
+                                        </td>
+
+                                        <td class="product-name">
+                                            <a href="@Url.Action("detaylar/" + item.productID,"Home")">@item.productname</a>
+                                        </td>
+
+                                        <td class="product-price">
+                                            <a href="@Url.Action("detaylar/" + item.productID,"Home")">@item.price</a>
+                                        </td>
+
+
+                                        <td class="product-price">
+                                            <a href="@Url.Action("detaylar/" + item.productID,"Home")">@item.quantity</a>
+                                        </td>
+
+
+                                        @{
+                                            decimal kdvdahil = 0;
+
+                            kdvdahil = Convert.ToDecimal((((item.kdv * item.price) / 100) + item.price) * item.quantity);
+                            kdvdahilyuvarla = Math.Round(kdvdahil, 2);
+                                        }
+
+                                        <td class="product-thumbnail">
+                                            <span class="amount">@kdvdahilyuvarla TL</span>
+                                        </td>
+
+                                    </tr>
+                                    count = 0;
+                            aratoplam = Convert.ToDecimal(kdvdahilyuvarla);
+                                }
+                            }
+
+                            <tr>
+                                <td class="product-name" style="background-color:black;">
+                                    <a href="">@aratoplam TL</a>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- wishlist area end  -->

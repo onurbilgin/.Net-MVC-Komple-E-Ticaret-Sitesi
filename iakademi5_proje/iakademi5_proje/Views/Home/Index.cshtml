@@ -1,0 +1,719 @@
+﻿@model iakademi5_proje.Models.AnasayfaModel
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/dafault_layout.cshtml";
+}
+
+
+
+<!-- slider area start -->
+<div class="home-1-slider-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-0 col-md-4 col-lg-4 ">
+            </div>
+            <div class="col-sm-12 col-md-5 col-lg-5 ">
+                <div class="h1-slider">
+                    <!-- HOME SLIDER -->
+                    <div class="slider-wrap">
+                        <div class="fullwidthbanner-container">
+                            <div class="home-1">
+                                <ul>
+
+                                    @foreach (var item in Model.slider_urunler)
+                                    {
+
+
+
+                                        <li data-transition="random" data-slotamount="7" data-masterspeed="1000">
+                                            <img src="~/Content/dosyalar/@item.resimyolu" alt="slide">
+                                            <div class="tp-caption large_black sfr carousel-caption-inner" data-x="150" data-y="50" data-speed="1100" data-start="1100" data-easing="easeInOutBack"
+                                                 style="color: black; font-size:28px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase;">
+                                                @item.price TL
+                                            </div>
+                                            <div class="tp-caption large_black sfr carousel-caption-inner" data-x="15" data-y="71" data-speed="1100" data-start="1400" data-easing="easeInOutBack"
+                                                 style="  font-size: 60px; font-style:italic; font-weight: normal; /*text-transform: uppercase;*/ color: black; font-weight: bold;">
+                                                @item.productname
+                                            </div>
+                                            <div class="tp-caption lfb carousel-caption-inner" data-x="130" data-y="160" data-speed="1300" data-start="1700" data-easing="easeInOutBack"
+                                                 style="">
+                                                <a href="@Url.Action("sepeteekle/" +item.productID,"Home")" class="s-btn" style="background: transparent; color: #fff; border: 1px solid #fff; font-weight:700; font-size: 12px; display: inline-block; padding:10px 18px; text-transform: uppercase;">Sepete Ekle</a>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END HOME SLIDER -->
+                </div>
+                <!-- 1st bannar start -->
+                <div class="h-1-banner-wapper">
+                    <div class="banner-home-inner pull-left">
+                        <a href="index.html#">
+                            <img alt="" src="~/Content/img/all-adds/1.jpg">
+                        </a>
+                    </div>
+                    <div class="banner-home-inner pull-right">
+                        <a href="index.html#">
+                            <img alt="" src="~/Content/img/all-adds/2.jpg">
+                        </a>
+                    </div>
+                </div>
+                <!-- 1st bannar end -->
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 ">
+                <div class="single-special-products">
+                    <h3 class="sp-module-title"><span>GÜNÜN ÜRÜNÜ</span></h3>
+                    <div class="all-sp-slides">
+                        <!-- SP-SINGLE Product -->
+                        <div class="sp-single">
+                            <div class="sp-img-area">
+                                <img class="first-img" src="~/Content/dosyalar/@Model.tek_ozel_urun.resimyolu" alt="" style="height:290px" />
+                                <img class="hover-img" src="~/Content/dosyalar/@Model.tek_ozel_urun.resimyolu" alt="" style="height:290px" />
+                                <div class="quick-view-detail">
+                                    <a href="@Url.Action("detaylar/" +Model.tek_ozel_urun.productID,"Home")">Detaylar</a>
+                                </div>
+                                <div class="sp-label-pro sp-label-pro-hot">Tek</div>
+                            </div>
+                            <div class="sp-info-area">
+                                <h2 class="product-name"><a title="Dolor Dignissim Semper" href="@Url.Action("detaylar/" +Model.tek_ozel_urun.productID,"Home")">@Model.tek_ozel_urun.productname</a></h2>
+                                @* <div class="product-rating">
+                                        <div class="ratingbox" title="" Rating="3/5">
+                                            <div style="width:65px" class="stars-orange"></div>
+                                        </div>
+                                    </div> *@
+                                <p class="all-prices">
+                                    <span class="sp-price main-price">@Model.tek_ozel_urun.price TL</span>
+                                </p>
+                                <div class="sp-button">
+                                    <div class="s-button">
+                                        <a href="@Url.Action("sepeteekle/" +Model.tek_ozel_urun.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                    </div>
+                                    <div class="s-button">
+                                        <a href="" data-toggle="tooltip" data-placement="top" title="" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                    </div>
+                                    <div class="s-button last-b ">
+                                        <a href="@Url.Action("detaylar/" +Model.tek_ozel_urun.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- SP-SINGLE Product -->
+                        <div class="sp-single">
+                            <div class="sp-img-area">
+                                <img class="first-img" src="~/Content/img/all-sp/3.jpg" alt="" />
+                                <img class="hover-img" src="~/Content/img/all-sp/4.jpg" alt="" />
+                                <div class="quick-view-detail">
+                                    <a href="index.html#">View Detail</a>
+                                </div>
+                            </div>
+                            <div class="sp-info-area">
+                                <h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">Et Ultrices Posuere</a></h2>
+                                <div class="product-rating">
+                                    <div class="ratingbox" title="" Rating="3/5">
+                                        <div style="width:45px" class="stars-orange"></div>
+                                    </div>
+                                </div>
+                                <p class="all-prices">
+                                    <span class="sp-price price-lessprice">$250.00</span>
+                                    <span class="sp-price main-price">$189.00</span>
+                                </p>
+                                <div class="sp-button">
+                                    <div class="s-button">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                    </div>
+                                    <div class="s-button">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                    </div>
+                                    <div class="s-button last-b ">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="view detail" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- SP-SINGLE Product -->
+                        <div class="sp-single">
+                            <div class="sp-img-area">
+                                <img class="first-img" src="~/Content/img/all-sp/5.jpg" alt="" />
+                                <img class="hover-img" src="~/Content/img/all-sp/6.jpg" alt="" />
+                                <div class="quick-view-detail">
+                                    <a href="index.html#">View Detail</a>
+                                </div>
+                                <div class="sp-label-pro sp-label-pro-new">New!</div>
+                            </div>
+                            <div class="sp-info-area">
+                                <h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">Dolor Dignissim Semper</a></h2>
+                                <div class="product-rating">
+                                    <div class="ratingbox" title="">
+                                        <div style="width:25px" class="stars-orange"></div>
+                                    </div>
+                                </div>
+                                <p class="all-prices">
+                                    <span class="sp-price main-price">$389.00</span>
+                                </p>
+                                <div class="sp-button">
+                                    <div class="s-button">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                    </div>
+                                    <div class="s-button">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                    </div>
+                                    <div class="s-button last-b ">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="view detail" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- SP-SINGLE Product -->
+                        <div class="sp-single">
+                            <div class="sp-img-area">
+                                <img class="first-img" src="~/Content/img/all-sp/1.jpg" alt="" />
+                                <img class="hover-img" src="~/Content/img/all-sp/2.jpg" alt="" />
+                                <div class="quick-view-detail">
+                                    <a href="index.html#">View Detail</a>
+                                </div>
+                                <div class="sp-label-pro sp-label-pro-hot">Hot!</div>
+                                <div class="sp-label-percentage">
+                                    <span class="sp-PricediscountAmount">-$5.00</span>
+                                </div>
+
+                            </div>
+                            <div class="sp-info-area">
+                                <h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">Dolor Dignissim Semper</a></h2>
+                                <div class="product-rating">
+                                    <div class="ratingbox" title="" Rating="3/5">
+                                        <div style="width:45px" class="stars-orange"></div>
+                                    </div>
+                                </div>
+                                <p class="all-prices">
+                                    <span class="sp-price price-lessprice">$250.00</span>
+                                    <span class="sp-price main-price">$189.00</span>
+                                </p>
+                                <div class="sp-button">
+                                    <div class="s-button">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                    </div>
+                                    <div class="s-button">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                    </div>
+                                    <div class="s-button last-b ">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="view detail" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- SP-SINGLE Product -->
+                        <div class="sp-single">
+                            <div class="sp-img-area">
+                                <img class="first-img" src="~/Content/img/all-sp/6.jpg" alt="" />
+                                <img class="hover-img" src="~/Content/img/all-sp/7.jpg" alt="" />
+                                <div class="quick-view-detail">
+                                    <a href="index.html#">View Detail</a>
+                                </div>
+                                <div class="sp-label-pro sp-label-pro-hot">Hot!</div>
+                                <div class="sp-label-percentage">
+                                    <span class="sp-PricediscountAmount">-$9.00</span>
+                                </div>
+
+                            </div>
+                            <div class="sp-info-area">
+                                <h2 class="product-name"><a title="Dolor Dignissim Semper" href="index.html#">Semper Dolor Dignissim </a></h2>
+                                <div class="product-rating">
+                                    <div class="ratingbox" title="" Rating="3/5">
+                                        <div style="width:45px" class="stars-orange"></div>
+                                    </div>
+                                </div>
+                                <p class="all-prices">
+                                    <span class="sp-price price-lessprice">$350.00</span>
+                                    <span class="sp-price main-price">$289.00</span>
+                                </p>
+                                <div class="sp-button">
+                                    <div class="s-button">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add to cart" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                    </div>
+                                    <div class="s-button">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                    </div>
+                                    <div class="s-button last-b ">
+                                        <a href="index.html#" data-toggle="tooltip" data-placement="top" title="view detail" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- slider area end -->
+<!-- header area end -->
+@*<div class="mobile-products-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12  col-sm-12 col-md-12 col-lg-12">
+                <h3 class="sp-module-title">
+                    <span>MobileXXX &amp; Tablet</span>
+                </h3>
+            </div> *@
+
+
+<!-- ÖZEL ÜRÜNLER area start -->
+<div class="mobile-products-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <div class="n-full-products">
+                    <h3 class="sp-module-title">
+                        @*all p title olursa bütün paragraf renklenir*@
+                        <span>ÖZEL ÜRÜNLER</span>
+                    </h3>
+
+                    @*  <div class="all-p-title"> renksiz oluyor
+                            <h3>ÖZEL ÜRÜNLER</h3>
+                        </div> *@
+                    <div class="row">
+                        <div class="all-new-p">
+                            <div class="all-new-single singal-p hom-1">
+
+                                @foreach (var item in Model.ozel_urunler)
+                                {
+                                    <!-- SP-SINGLE Product -->
+                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img class="first-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                                <img class="hover-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                                <div class="quick-view-detail">
+                                                    <a href="@Url.Action("detaylar/" +item.productID,"Home")">Detaylar</a>
+                                                </div>
+                                                <div class="sp-label-pro sp-label-pro-hot">ÖZEL</div>
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h2 class="product-name"><a title="@item.productname" href="@Url.Action("detaylar/" +item.productID,"Home")">@item.productname </a></h2>
+                                                @* <div class="product-rating">
+                                                    <div class="ratingbox" title="" Rating="3/5">
+                                                        <div style="width:50px" class="stars-orange"></div>
+                                                    </div> *@
+                                            </div>
+                                            <p class="all-prices">
+                                                <span class="sp-price main-price">@item.price TL</span>
+                                            </p>
+                                            <div class="sp-button">
+                                                <div class="s-button">
+                                                    <a href="@Url.Action("sepeteekle/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle " class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                                </div>
+                                                <div class="s-button">
+                                                    <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                                </div>
+                                                <div class="s-button last-b ">
+                                                    <a href="@Url.Action("detaylar/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        @* <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="new-bottom-area">
+                                    <!-- bannar-1 -->
+                                    <div class="banner-home-inner">
+                                        <a href="index.html#">
+                                            <img src="~/Content/img/all-bannars/1.jpg" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div> *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ÖZEL ÜRÜNLER area end -->
+
+<!-- YILDIZLI product area start -->
+<div class="mobile-products-area beauty-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <h3 class="sp-module-title">
+                    @*all p title olursa bütün paragraf renklenir*@
+                    <span>YILDIZLI ÜRÜNLER</span>
+                </h3>
+
+                @*  <div class="n-full-products">
+                    <div class="all-p-title">
+                            <h3>YILDIZLI ÜRÜNLER</h3>
+                            </div> *@
+
+
+                <div class="row">
+                    <div class="all-new-p">
+                        <div class="all-new-single singal-p hom-1">
+
+                            @foreach (var item in Model.yildizli_urunler)
+                            {
+                                <!-- SP-SINGLE Product -->
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="sp-single">
+                                        <div class="sp-img-area">
+                                            <img class="first-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <img class="hover-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <div class="quick-view-detail">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")">Detaylar</a>
+                                            </div>
+                                            <div class="sp-label-pro sp-label-pro-new" style="color:black"><b>YILDIZ</b></div>
+                                        </div>
+                                        <div class="sp-info-area">
+                                            <h2 class="product-name"><a title="@item.productname" href="@Url.Action("detaylar/" +item.productID,"Home")">@item.productname </a></h2>
+                                            @* <div class="product-rating">
+                                                <div class="ratingbox" title="" Rating="3/5">
+                                                    <div style="width:50px" class="stars-orange"></div>
+                                                </div> *@
+                                        </div>
+                                        <p class="all-prices">
+                                            <span class="sp-price main-price">@item.price TL</span>
+                                        </p>
+                                        <div class="sp-button">
+                                            <div class="s-button">
+                                                <a href="@Url.Action("sepeteekle/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle " class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                            </div>
+                                            <div class="s-button">
+                                                <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                            </div>
+                                            <div class="s-button last-b ">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    @*  <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="new-bottom-area">
+                                <div class="banner-home-inner">
+                                    <a href="index.html#">
+                                        <img src="~/Content/img/all-bannars/1.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- YILDIZLI product area end -->
+
+<!-- ENYENİ product area start -->
+<div class="mobile-products-area furniture-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <h3 class="sp-module-title">
+                    @*all p title olursa bütün paragraf renklenir*@
+                    <span>EN YENİ ÜRÜNLER</span>
+                </h3>
+
+                @*  <div class="n-full-products">
+                    <div class="all-p-title">
+                            <h3>YILDIZLI ÜRÜNLER</h3>
+                            </div> *@
+
+
+                <div class="row">
+                    <div class="all-new-p">
+                        <div class="all-new-single singal-p hom-1">
+
+                            @foreach (var item in Model.enyeni_urunler)
+                            {
+                                <!-- SP-SINGLE Product -->
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="sp-single">
+                                        <div class="sp-img-area">
+                                            <img class="first-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <img class="hover-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <div class="quick-view-detail">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")">Detaylar</a>
+                                            </div>
+                                            <div class="sp-label-pro sp-label-pro-hot" style="color:black"><b>YENİ</b></div>
+                                        </div>
+                                        <div class="sp-info-area">
+                                            <h2 class="product-name"><a title="@item.productname" href="@Url.Action("detaylar/" +item.productID,"Home")">@item.productname </a></h2>
+                                            @* <div class="product-rating">
+                                                <div class="ratingbox" title="" Rating="3/5">
+                                                    <div style="width:50px" class="stars-orange"></div>
+                                                </div> *@
+                                        </div>
+                                        <p class="all-prices">
+                                            <span class="sp-price main-price">@item.price TL</span>
+                                        </p>
+                                        <div class="sp-button">
+                                            <div class="s-button">
+                                                <a href="@Url.Action("sepeteekle/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle " class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                            </div>
+                                            <div class="s-button">
+                                                <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                            </div>
+                                            <div class="s-button last-b ">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    @*  <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="new-bottom-area">
+                                <div class="banner-home-inner">
+                                    <a href="index.html#">
+                                        <img src="~/Content/img/all-bannars/1.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ENYENİ product area end -->
+
+<!-- İNDİRİMLİ product area start -->
+<div class="mobile-products-area fashion-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <h3 class="sp-module-title">
+                    @*all p title olursa bütün paragraf renklenir*@
+                    <span>İNDİRİMLİ ÜRÜNLER</span>
+                </h3>
+
+                @*  <div class="n-full-products">
+                    <div class="all-p-title">
+                            <h3>YILDIZLI ÜRÜNLER</h3>
+                            </div> *@
+
+
+                <div class="row">
+                    <div class="all-new-p">
+                        <div class="all-new-single singal-p hom-1">
+
+                            @foreach (var item in Model.indirimli_urunler)
+                            {
+                                <!-- SP-SINGLE Product -->
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="sp-single">
+                                        <div class="sp-img-area">
+                                            <img class="first-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <img class="hover-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <div class="quick-view-detail">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")">Detaylar</a>
+                                            </div>
+                                            <div class="sp-label-pro sp-label-pro-new" style="color:black"><b>%@item.discount</b></div>
+                                        </div>
+                                        <div class="sp-info-area">
+                                            <h2 class="product-name"><a title="@item.productname" href="@Url.Action("detaylar/" +item.productID,"Home")">@item.productname </a></h2>
+                                            @* <div class="product-rating">
+                                                <div class="ratingbox" title="" Rating="3/5">
+                                                    <div style="width:50px" class="stars-orange"></div>
+                                                </div> *@
+                                        </div>
+                                        <p class="all-prices">
+                                            <span class="sp-price main-price">@item.price TL</span>
+                                        </p>
+                                        <div class="sp-button">
+                                            <div class="s-button">
+                                                <a href="@Url.Action("sepeteekle/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle " class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                            </div>
+                                            <div class="s-button">
+                                                <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                            </div>
+                                            <div class="s-button last-b ">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    @*  <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="new-bottom-area">
+                                <div class="banner-home-inner">
+                                    <a href="index.html#">
+                                        <img src="~/Content/img/all-bannars/1.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- İNDİRİMLİ product area end -->
+
+<!-- Öne Çıkanlar product area start -->
+<div class="mobile-products-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <h3 class="sp-module-title">
+                    @*all p title olursa bütün paragraf renklenir*@
+                    <span>ÖNE ÇIKANLAR</span>
+                </h3>
+
+                @*  <div class="n-full-products">
+                    <div class="all-p-title">
+                            <h3>YILDIZLI ÜRÜNLER</h3>
+                            </div> *@
+
+
+                <div class="row">
+                    <div class="all-new-p">
+                        <div class="all-new-single singal-p hom-1">
+
+                            @foreach (var item in Model.onecikanlar)
+                            {
+                                <!-- SP-SINGLE Product -->
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="sp-single">
+                                        <div class="sp-img-area">
+                                            <img class="first-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <img class="hover-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <div class="quick-view-detail">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")">Detaylar</a>
+                                            </div>
+                                            <div class="sp-label-pro sp-label-pro-hot" style="color:black"><b>FAVORİ</b></div>
+                                        </div>
+                                        <div class="sp-info-area">
+                                            <h2 class="product-name"><a title="@item.productname" href="@Url.Action("detaylar/" +item.productID,"Home")">@item.productname </a></h2>
+                                            @* <div class="product-rating">
+                                                <div class="ratingbox" title="" Rating="3/5">
+                                                    <div style="width:50px" class="stars-orange"></div>
+                                                </div> *@
+                                        </div>
+                                        <p class="all-prices">
+                                            <span class="sp-price main-price">@item.price TL</span>
+                                        </p>
+                                        <div class="sp-button">
+                                            <div class="s-button">
+                                                <a href="@Url.Action("sepeteekle/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle " class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                            </div>
+                                            <div class="s-button">
+                                                <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                            </div>
+                                            <div class="s-button last-b ">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    @*  <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="new-bottom-area">
+                                <div class="banner-home-inner">
+                                    <a href="index.html#">
+                                        <img src="~/Content/img/all-bannars/1.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Öne Çıkanlar product area end -->
+
+<!-- Çok Satanlar product area start -->
+<div class="mobile-products-area beauty-p">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <h3 class="sp-module-title">
+                    @*all p title olursa bütün paragraf renklenir*@
+                    <span>ÇOK SATAN ÜRÜNLER</span>
+                </h3>
+
+                @*  <div class="n-full-products">
+                    <div class="all-p-title">
+                            <h3>YILDIZLI ÜRÜNLER</h3>
+                            </div> *@
+
+
+                <div class="row">
+                    <div class="all-new-p">
+                        <div class="all-new-single singal-p hom-1">
+
+                            @foreach (var item in Model.coksatanlar)
+                            {
+                                <!-- SP-SINGLE Product -->
+                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                    <div class="sp-single">
+                                        <div class="sp-img-area">
+                                            <img class="first-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <img class="hover-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:190px" />
+                                            <div class="quick-view-detail">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")">Detaylar</a>
+                                            </div>
+                                            <div class="sp-label-pro sp-label-pro-new" style="color:black"><b>ÇOK</b></div>
+                                        </div>
+                                        <div class="sp-info-area">
+                                            <h2 class="product-name"><a title="@item.productname" href="@Url.Action("detaylar/" +item.productID,"Home")">@item.productname </a></h2>
+                                            @* <div class="product-rating">
+                                                <div class="ratingbox" title="" Rating="3/5">
+                                                    <div style="width:50px" class="stars-orange"></div>
+                                                </div> *@
+                                        </div>
+                                        <p class="all-prices">
+                                            <span class="sp-price main-price">@item.price TL</span>
+                                        </p>
+                                        <div class="sp-button">
+                                            <div class="s-button">
+                                                <a href="@Url.Action("sepeteekle/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle " class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                            </div>
+                                            <div class="s-button">
+                                                <a href="index.html#" data-toggle="tooltip" data-placement="top" title="add favorite" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                            </div>
+                                            <div class="s-button last-b ">
+                                                <a href="@Url.Action("detaylar/" +item.productID,"Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    @*  <div class="col-sm-12 col-md-12 col-lg-12">
+                            <div class="new-bottom-area">
+                                <div class="banner-home-inner">
+                                    <a href="index.html#">
+                                        <img src="~/Content/img/all-bannars/1.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div> *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Çok Satanlar product area end -->
+

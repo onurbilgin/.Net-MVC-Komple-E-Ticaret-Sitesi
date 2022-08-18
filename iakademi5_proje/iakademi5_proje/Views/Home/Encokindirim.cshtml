@@ -1,0 +1,176 @@
+﻿@model iakademi5_proje.Models.AnasayfaModel
+
+@{
+    ViewBag.Title = "Encokindirim";
+    Layout = "~/Views/Shared/dafault_layout.cshtml";
+}
+
+<!-- Shop area start  -->
+<div class="shop-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="shop--right">
+                    <div class="s-r-sidebar-banar">
+                        <img alt="" src="img/shopbannar.jpg">
+                    </div>
+                    <div class="shop-product">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <hr>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="singl-shop ">
+
+                                @*Sayfaya ajax'la yeni ürünler yüklendiğinde aşağıdaki div'e append edecek*@
+                                <div id="products-thumbs" style="width:100%">
+
+                                    @foreach (var item in Model.indirimli_urunler)
+                                    {
+
+
+                                        <!-- SP-SINGLE Product -->
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                            <div class="sp-single">
+                                                <div class="sp-img-area">
+                                                    <img class="first-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:220px;" />
+                                                    <img class="hover-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:220px;" />
+                                                    <div class="quick-view-detail">
+                                                        <a href="@Url.Action("detaylar/" + item.productID, "Home")">Detaylar</a>
+                                                    </div>
+                                                    <div class="sp-label-pro sp-label-pro-hot">%@item.discount</div>
+                                                </div>
+                                                <div class="sp-info-area">
+                                                    <h2 class="product-name"><a title="@item.productname" href="@Url.Action("detaylar/" +item.productID,"Home")">@item.productname </a></h2>
+                                                    @*  <div class="product-rating">
+                                                            <div class="ratingbox" title="Rating: 3/5">
+                                                                <div style="width:50px" class="stars-orange"></div>
+                                                            </div>
+                                                        </div> *@
+                                                    <p class="all-prices">
+                                                        <span class="sp-price main-price">@item.price TL</span>
+                                                    </p>
+                                                    <div class="sp-button">
+                                                        <div class="s-button">
+                                                            <a href="@Url.Action("sepeteekle/" + item.productID, "Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                                        </div>
+                                                        <div class="s-button">
+                                                            <a href="" data-toggle="tooltip" data-placement="top" title="" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                                        </div>
+                                                        <div class="s-button last-b ">
+                                                            <a href="@Url.Action("detaylar/" + item.productID, "Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    }
+
+                                </div>
+
+                            </div>
+                            <div class="clear"></div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Shop area End  -->
+
+
+      @*  <div id="loadMore">
+            <div class="s-poraduct-botton">
+                <input type="submit" name="name" value="Daha Fazla Ürün Göster" />
+            </div>
+        </div> *@
+
+    </div>
+</div>
+
+<input type="hidden" id="sayfano" value="0" />
+<input type="hidden" id="scrollheight" name="name" value="100" />
+<input type="hidden" id="scrolldeger" name="name" value="0" />
+
+<script>
+
+    // daha çok göster butonuna tıklayınca ajax sayfalama
+    $(document).on("click", "#loadMore", function () {
+        // alert("aaaaa")
+        var sayfano = parseInt($("#sayfano").val())
+        // alert(sayfano)
+        var sonrakisayfam = sayfano + 1;
+        $.ajax({
+            type: "GET",
+            url: "/Home/_partial_Encokindirim",
+            data: { sonrakisayfa: sonrakisayfam },
+            async: true,
+            processData: true,
+            cache: true,
+            success: function (result) {
+                //alert(result)
+
+              //  if (result != "")  sayfa bitince ne gösterilecek
+              //  {
+              //     $("#products-thumbs").append(result)
+              //      $("#sayfano").val(+sonrakisayfam)
+              //  }
+              //  else {
+              //      // id'si loadMore olan div csslerinden, display none
+              //  }
+
+                $("#products-thumbs").append(result)
+                $("#sayfano").val(+sonrakisayfam)
+            }
+        })
+    })
+
+
+    //mouse ile scroll yapınca ajax sayfalama
+    $(window).scroll(function () {
+        //  alert("scroll")
+        $("#scrolldeger").val($(window).scrollTop())
+
+        if ($(window).scrollTop() - $("#scrollheight").val() == 200) {
+           // alert("scroll")
+
+            //ajax'ı burada yapacağız
+            var sayfano = parseInt($("#sayfano").val())
+            // alert(sayfano)
+            var sonrakisayfam = sayfano + 1;
+            $.ajax({
+                type: "GET",
+                url: "/Home/_partial_Encokindirim",
+                data: { sonrakisayfa: sonrakisayfam },
+                async: true,
+                processData: true,
+                cache: true,
+                success: function (result) {
+                    //alert(result)
+
+                    //  if (result != "")  sayfa bitince ne gösterilecek
+                    //  {
+                    //     $("#products-thumbs").append(result)
+                    //      $("#sayfano").val(+sonrakisayfam)
+                    //  }
+                    //  else {
+                    //      // id'si loadMore olan div csslerinden, display none
+                    //  }
+
+                    $("#products-thumbs").append(result)
+                    $("#sayfano").val(+sonrakisayfam)
+                    $("#scrollheight").val($(window).scrollTop())
+                }
+            })
+        }
+    })
+
+
+</script>
+
+

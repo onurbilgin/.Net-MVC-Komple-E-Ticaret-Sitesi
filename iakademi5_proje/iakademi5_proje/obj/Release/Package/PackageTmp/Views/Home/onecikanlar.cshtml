@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "onecikanlar";
+    Layout = "~/Views/Shared/dafault_layout.cshtml";
+}
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@Html.PagedListPager((IPagedList)ViewBag.onecikanlar, Page => Url.Action("onecikanlar", new { Page }))
+
+<div class="shop-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="shop--right">
+                    <div class="s-r-sidebar-banar">
+                        <img alt="" src="img/shopbannar.jpg">
+                    </div>
+                    <div class="shop-product">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <hr>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="singl-shop ">
+
+
+
+                                @foreach (var item in ViewBag.onecikanlar)
+                                {
+                                    <!-- SP-SINGLE Product -->
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img class="first-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:220px;" />
+                                                <img class="hover-img" src="~/Content/dosyalar/@item.resimyolu" alt="" style="height:220px;" />
+                                                <div class="quick-view-detail">
+                                                    <a href="@Url.Action("detaylar/" + item.productID, "Home")">Detaylar</a>
+                                                </div>
+                                                <div class="sp-label-pro sp-label-pro-hot">% @item.discount</div>
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h2 class="product-name"><a title="@item.productname" href="@Url.Action("detaylar/" +item.productID,"Home")">@item.productname </a></h2>
+                                                @*  <div class="product-rating">
+                                                        <div class="ratingbox" title="Rating: 3/5">
+                                                            <div style="width:50px" class="stars-orange"></div>
+                                                        </div>
+                                                    </div> *@
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">@item.price TL</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a href="@Url.Action("sepeteekle/" + item.productID, "Home")" data-toggle="tooltip" data-placement="top" title="Sepete Ekle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+                                                    <div class="s-button">
+                                                        <a href="" data-toggle="tooltip" data-placement="top" title="" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-heart-o"></i> </a>
+                                                    </div>
+                                                    <div class="s-button last-b ">
+                                                        <a href="@Url.Action("detaylar/" + item.productID, "Home")" data-toggle="tooltip" data-placement="top" title="Detaylar" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                            <div class="clear"></div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.PagedListPager((IPagedList)ViewBag.onecikanlar, Page => Url.Action("onecikanlar", new { Page }))

@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "hesabim";
+    Layout = "~/Views/Shared/dafault_layout.cshtml";
+}
+
+<!-- Loging area Start  -->
+<div class="loging-areas">
+    <div class="container">
+        <div class="row">
+
+         @*   <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="new-users">
+                    <div class="content">
+                        <h2>Create an New Account</h2>
+                        <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                    </div>
+                    <div class="buttons-set">
+                        <button class="vina-button" title="Create an Account" type="button"><span><span>Registration</span></span></button>
+                    </div>
+                </div>
+            </div> *@
+
+            <div class="col-sm-12 col-md-3 col-lg-3"></div>
+
+            <div class="col-sm-12 col-md-6 col-lg-6">
+                <div class="login-users">
+                    <form action="/Home/hesabim" id="com-form-login" method="post">
+                        <fieldset class="userdata content">
+                            <h3 class="proopc-process-title" style="background-color: black;color:white">ÜYE GİRİŞİ</h3>
+                            <p style="color:#F47E1E">Üye iseniz lütfen giriş yapınız.</p>
+                            <ul class="form-list">
+
+                                <li>
+                                    <label class="required"><em>*</em>Email:</label>
+                                    <div class="input-box" id="com-form-login-username">
+                                        <input type="text" placeholder="Email" class="inputbox" name="email">
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <label class="required"><em>*</em>Parola:</label>
+                                    <div class="input-box" id="com-form-login-password">
+                                        <input type="password" placeholder="Parola" class="inputbox" id="parola" name="parola">
+                                    </div>
+                                </li>
+
+                                <li id="com-form-login-remember">
+                                    <input type="checkbox" value="yes" class="inputbox" name="remember" id="remember">
+                                    <label for="remember">Beni Hatırla</label>
+                                </li>
+
+                            </ul>
+                        </fieldset>
+                        <div class="buttons-set">
+
+                            <a href="@Url.Action("uyeol","Home")" title="Üye Ol">
+                                <input type="button" class="vina-button" name="name" value="Üye Ol" />
+                            </a>
+
+                            <input type="submit" value="GİRİŞ YAP" class="vina-button" name="btnGonder">
+
+
+                          @*  <a href="login.html#">Forgot your username?</a>
+                            <a href="login.html#">Forgot your password?</a> *@
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Loging area area End  -->

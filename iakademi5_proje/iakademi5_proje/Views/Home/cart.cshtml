@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "cart";
+    Layout = "~/Views/Shared/dafault_layout.cshtml";
+}
+
+@using iakademi5_proje.Models
+@using (Html.BeginForm()) {
+
+
+<!-- wishlist area start  -->
+<div class="wishlist-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+              @*  <div class="continue-link">
+                    <a href="cart.html#">Continue Shopping</a>
+                </div> *@
+                <div class="cart-wrapper table-responsive">
+                    <table class="shop_table cart ">
+                        <thead>
+                            <tr>
+                                <th colspan="3" class="product-name">ÜRÜN ADI</th>
+                                <th class="product-price">KDV</th>
+                                <th class="product-price">BİRİM FİYAT</th>
+                                <th class="product-quantity">ADET</th>
+                                <th class="product-subtotal">TOPLAM FİYAT (KDV DAHİL)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in ViewBag.Sepetim as IList<Classsiparisler>)
+                            {
+                                iakademi_projeEntities db = new iakademi_projeEntities();
+                            <tr class="cart_item">
+                                <td class="remove-product">
+                                    <a title="Sepetten Sil" class="remove" href="@Url.Action("cart", new { scid = item.productID })"><span class="icon-close"></span></a>
+                                </td>
+                                <td class="product-thumbnail">
+                                    <a href="@Url.Action("detaylar" +item.productID,"Home")"><img width="114" height="130" alt="04" class="attachment-shop_thumbnail wp-post-image" src="~/Content/dosyalar/@item.resimyolu"></a>
+                                </td>
+                                <td class="product-name">
+                                    <a href="@Url.Action("detaylar" +item.productID,"Home")">@item.productname</a>
+                                </td>
+                                <td class="product-quantity">
+                                    <a href="@Url.Action("detaylar" +item.productID,"Home")">@item.kdv</a>
+                                </td>
+                                <td class="product-price">
+                                    <a href="@Url.Action("detaylar" +item.productID,"Home")">@item.price TL </a>
+                                </td>
+                                <td class="product-quantity">
+                                    <a href="@Url.Action("detaylar" +item.productID,"Home")">@item.adet</a>
+                                </td>
+                                @{
+                                    decimal kdvdahil = 0;
+                                    decimal kdvdahilyuvarla = 0;
+
+                                    kdvdahil = (((item.kdv * item.price) / 100) + item.price) * item.adet;
+                                    kdvdahilyuvarla = Math.Round(kdvdahil, 2);
+                                }
+                                <td class="product-price">
+                                    <a href="@Url.Action("detaylar" +item.productID,"Home")">@kdvdahilyuvarla TL</a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 "></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 ">
+                        <div class="cart_totals">
+                            <h2>SEPET ÖZETİM</h2>
+                            <div class="total_table">
+                                <table class="table-responsive">
+                                    <tbody>
+
+                                        @{ 
+                                            int i = 0;
+                                            int toplamadet = 0;
+                                            decimal toplamprice = 0;
+                                            decimal toplamadet_price_kdvli = 0;
+                                            decimal toplamadet_price_kdvsiz = 0;
+
+                                            foreach (var item in ViewBag.sepet_tablo_detay as List<Classsiparisler>)
+                                            {
+                                                toplamadet += item.adet;
+                                                toplamprice += item.price;
+                                                toplamadet_price_kdvli += (((item.kdv * item.price) / 100) + item.price) * item.adet;
+                                                toplamadet_price_kdvsiz += item.price * item.adet;
+                                                i++;
+                                            }
+
+                                            ViewBag.kalem = i;
+                                            ViewBag.toplamadet = toplamadet;
+                                            ViewBag.sepettutarikdvsiz = Math.Round(toplamadet_price_kdvsiz, 2);
+                                            ViewBag.geneltoplam = Math.Round(toplamadet_price_kdvli, 2);
+                                            ViewBag.toplamkdv = Math.Round(toplamadet_price_kdvli, 2) - Math.Round(toplamadet_price_kdvsiz, 2);
+
+
+                                        }
+
+
+                                        <tr class="cart-subtotal">
+                                            <th>TUTAR (Kdv Hariç)</th>
+                                            <td><span class="amount">@ViewBag.sepettutarikdvsiz TL</span></td>
+                                        </tr>
+
+                                        <tr class="shipping">
+                                            <th>KDV</th>
+                                            <td>@ViewBag.toplamkdv TL</td>
+                                        </tr>
+
+                                        <tr class="order-total">
+                                            <th>TOPLAM</th>
+                                            <td><strong><span class="amount">@ViewBag.geneltoplam TL</span></strong> </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <div class="submit_crt">
+
+                                    <a href="@Url.Action("order","Home")" title="Sonraki Adıma Geç">
+                                        <input type="button" class="update_cart" value="Sonrakİ Adıma Geç" />
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- wishlist area end  -->
+
+                                            }

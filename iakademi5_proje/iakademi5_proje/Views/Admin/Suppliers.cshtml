@@ -1,0 +1,46 @@
+﻿@model iakademi5_proje.Models.tbl_Suppliers
+@{
+    ViewBag.Title = "Suppliers";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+
+    
+}
+
+
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet box red ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Marka Giriş Formu
+        </div>
+        <div class="tools">
+            <a href="" class="collapse">
+            </a>
+            <a href="#portlet-config" data-toggle="modal" class="config">
+            </a>
+            <a href="" class="reload">
+            </a>
+            <a href="" class="remove">
+            </a>
+        </div>
+    </div>
+    <div class="portlet-body form">
+
+        <form class="form-horizontal" role="form" action="Suppliers" method="post">
+            <div class="form-body">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Marka Adı</label>
+                    <div class="col-md-9">
+                        <input type="text" class="form-control input-lg" placeholder="Marka Adı" name="brandname" required maxlength="50">
+                    </div>
+                </div>
+                
+             </div>   
+            <div class="form-actions right1">
+                <button type="button" class="btn default">İptal</button>
+                <button type="submit" class="btn green">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->

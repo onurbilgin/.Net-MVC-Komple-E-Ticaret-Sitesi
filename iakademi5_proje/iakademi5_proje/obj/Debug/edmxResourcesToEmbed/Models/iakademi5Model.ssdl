@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="iakademi_projeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_Categories">
+    <Key>
+      <PropertyRef Name="categoryID" />
+    </Key>
+    <Property Name="categoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="parentID" Type="int" />
+    <Property Name="categoryname" Type="nchar" MaxLength="100" />
+    <Property Name="aciklama" Type="nvarchar(max)" />
+    <Property Name="aktif" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_Comments">
+    <Key>
+      <PropertyRef Name="yorumID" />
+    </Key>
+    <Property Name="yorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productID" Type="int" />
+    <Property Name="comment" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_Images">
+    <Key>
+      <PropertyRef Name="resimID" />
+    </Key>
+    <Property Name="resimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productID" Type="int" />
+    <Property Name="resimyolu" Type="nvarchar(max)" />
+    <Property Name="aktif" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_Mesaj">
+    <Key>
+      <PropertyRef Name="mesajID" />
+    </Key>
+    <Property Name="mesajID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="message" Type="nvarchar(max)" />
+    <Property Name="isim" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="konu" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tbl_Orders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="int" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="orderGroupGUID" Type="nvarchar" MaxLength="50" />
+    <Property Name="invoiceAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="aktif" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_Products">
+    <Key>
+      <PropertyRef Name="productID" />
+    </Key>
+    <Property Name="productID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productcode" Type="nvarchar" MaxLength="10" />
+    <Property Name="productname" Type="nvarchar" MaxLength="100" />
+    <Property Name="price" Type="decimal" Precision="11" Scale="2" />
+    <Property Name="categoryID" Type="int" />
+    <Property Name="supplierID" Type="int" />
+    <Property Name="stock" Type="bigint" />
+    <Property Name="discount" Type="int" />
+    <Property Name="status" Type="tinyint" />
+    <Property Name="adddate" Type="datetime" />
+    <Property Name="keywords" Type="nvarchar(max)" />
+    <Property Name="desidegeri" Type="int" />
+    <Property Name="kdv" Type="int" />
+    <Property Name="tiklamasayisi" Type="int" />
+    <Property Name="coksatanlar" Type="int" />
+    <Property Name="benzer_urunler" Type="int" />
+    <Property Name="notlar" Type="nvarchar(max)" />
+    <Property Name="aktif" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_Suppliers">
+    <Key>
+      <PropertyRef Name="supplierID" />
+    </Key>
+    <Property Name="supplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="brandname" Type="nvarchar" MaxLength="50" />
+    <Property Name="aktif" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_Users">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="parola" Type="nvarchar" MaxLength="50" />
+    <Property Name="isimsoyisim" Type="nvarchar" MaxLength="50" />
+    <Property Name="telefon" Type="nvarchar" MaxLength="10" />
+    <Property Name="faturaadresi" Type="nvarchar(max)" />
+    <Property Name="adminmi" Type="bit" />
+    <Property Name="aktif" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'iakademi_proje.dbo.view_arama' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="view_arama">
+    <Key>
+      <PropertyRef Name="KATEGORI" />
+      <PropertyRef Name="URUN" />
+      <PropertyRef Name="MARKA" />
+    </Key>
+    <Property Name="KATEGORI" Type="int" Nullable="false" />
+    <Property Name="URUN" Type="int" Nullable="false" />
+    <Property Name="MARKA" Type="int" Nullable="false" />
+    <Property Name="ARAMAISMI" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'iakademi_proje.dbo.vw_aktif_urunler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_aktif_urunler">
+    <Key>
+      <PropertyRef Name="productID" />
+      <PropertyRef Name="categoryID" />
+      <PropertyRef Name="resimID" />
+    </Key>
+    <Property Name="productID" Type="int" Nullable="false" />
+    <Property Name="productname" Type="nvarchar" MaxLength="100" />
+    <Property Name="productcode" Type="nvarchar" MaxLength="10" />
+    <Property Name="price" Type="decimal" Precision="11" Scale="2" />
+    <Property Name="kdv" Type="int" />
+    <Property Name="stock" Type="bigint" />
+    <Property Name="discount" Type="int" />
+    <Property Name="status" Type="tinyint" />
+    <Property Name="adddate" Type="datetime" />
+    <Property Name="keywords" Type="nvarchar(max)" />
+    <Property Name="desidegeri" Type="int" />
+    <Property Name="tiklamasayisi" Type="int" />
+    <Property Name="coksatanlar" Type="int" />
+    <Property Name="benzer_urunler" Type="int" />
+    <Property Name="notlar" Type="nvarchar(max)" />
+    <Property Name="aktif" Type="bit" />
+    <Property Name="categoryID" Type="int" Nullable="false" />
+    <Property Name="categoryname" Type="nchar" MaxLength="100" />
+    <Property Name="supplierID" Type="int" />
+    <Property Name="brandname" Type="nvarchar" MaxLength="50" />
+    <Property Name="resimyolu" Type="nvarchar(max)" />
+    <Property Name="resimID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'iakademi_proje.dbo.vw_siparislerim' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_siparislerim">
+    <Key>
+      <PropertyRef Name="productID" />
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="productID" Type="int" Nullable="false" />
+    <Property Name="productname" Type="nvarchar" MaxLength="100" />
+    <Property Name="price" Type="decimal" Precision="11" Scale="2" />
+    <Property Name="kdv" Type="int" />
+    <Property Name="OrderID" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" />
+    <Property Name="orderGroupGUID" Type="nvarchar" MaxLength="50" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="userID" Type="int" />
+  </EntityType>
+  <EntityContainer Name="iakademi_projeModelStoreContainer">
+    <EntitySet Name="tbl_Categories" EntityType="Self.tbl_Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Comments" EntityType="Self.tbl_Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Images" EntityType="Self.tbl_Images" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Mesaj" EntityType="Self.tbl_Mesaj" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Orders" EntityType="Self.tbl_Orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Products" EntityType="Self.tbl_Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Suppliers" EntityType="Self.tbl_Suppliers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_Users" EntityType="Self.tbl_Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="view_arama" EntityType="Self.view_arama" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [view_arama].[KATEGORI] AS [KATEGORI], 
+    [view_arama].[URUN] AS [URUN], 
+    [view_arama].[MARKA] AS [MARKA], 
+    [view_arama].[ARAMAISMI] AS [ARAMAISMI]
+    FROM [dbo].[view_arama] AS [view_arama]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_aktif_urunler" EntityType="Self.vw_aktif_urunler" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_aktif_urunler].[productID] AS [productID], 
+    [vw_aktif_urunler].[productname] AS [productname], 
+    [vw_aktif_urunler].[productcode] AS [productcode], 
+    [vw_aktif_urunler].[price] AS [price], 
+    [vw_aktif_urunler].[kdv] AS [kdv], 
+    [vw_aktif_urunler].[stock] AS [stock], 
+    [vw_aktif_urunler].[discount] AS [discount], 
+    [vw_aktif_urunler].[status] AS [status], 
+    [vw_aktif_urunler].[adddate] AS [adddate], 
+    [vw_aktif_urunler].[keywords] AS [keywords], 
+    [vw_aktif_urunler].[desidegeri] AS [desidegeri], 
+    [vw_aktif_urunler].[tiklamasayisi] AS [tiklamasayisi], 
+    [vw_aktif_urunler].[coksatanlar] AS [coksatanlar], 
+    [vw_aktif_urunler].[benzer_urunler] AS [benzer_urunler], 
+    [vw_aktif_urunler].[notlar] AS [notlar], 
+    [vw_aktif_urunler].[aktif] AS [aktif], 
+    [vw_aktif_urunler].[categoryID] AS [categoryID], 
+    [vw_aktif_urunler].[categoryname] AS [categoryname], 
+    [vw_aktif_urunler].[supplierID] AS [supplierID], 
+    [vw_aktif_urunler].[brandname] AS [brandname], 
+    [vw_aktif_urunler].[resimyolu] AS [resimyolu], 
+    [vw_aktif_urunler].[resimID] AS [resimID]
+    FROM [dbo].[vw_aktif_urunler] AS [vw_aktif_urunler]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_siparislerim" EntityType="Self.vw_siparislerim" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_siparislerim].[productID] AS [productID], 
+    [vw_siparislerim].[productname] AS [productname], 
+    [vw_siparislerim].[price] AS [price], 
+    [vw_siparislerim].[kdv] AS [kdv], 
+    [vw_siparislerim].[OrderID] AS [OrderID], 
+    [vw_siparislerim].[OrderDate] AS [OrderDate], 
+    [vw_siparislerim].[orderGroupGUID] AS [orderGroupGUID], 
+    [vw_siparislerim].[quantity] AS [quantity], 
+    [vw_siparislerim].[userID] AS [userID]
+    FROM [dbo].[vw_siparislerim] AS [vw_siparislerim]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

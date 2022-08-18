@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="iakademi_projeModelStoreContainer" CdmEntityContainer="iakademi_projeEntities">
+    <EntitySetMapping Name="tbl_Categories">
+      <EntityTypeMapping TypeName="iakademi_projeModel.tbl_Categories">
+        <MappingFragment StoreEntitySet="tbl_Categories">
+          <ScalarProperty Name="aktif" ColumnName="aktif" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+          <ScalarProperty Name="parentID" ColumnName="parentID" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Images">
+      <EntityTypeMapping TypeName="iakademi_projeModel.tbl_Images">
+        <MappingFragment StoreEntitySet="tbl_Images">
+          <ScalarProperty Name="aktif" ColumnName="aktif" />
+          <ScalarProperty Name="resimyolu" ColumnName="resimyolu" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+          <ScalarProperty Name="resimID" ColumnName="resimID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Products">
+      <EntityTypeMapping TypeName="iakademi_projeModel.tbl_Products">
+        <MappingFragment StoreEntitySet="tbl_Products">
+          <ScalarProperty Name="aktif" ColumnName="aktif" />
+          <ScalarProperty Name="notlar" ColumnName="notlar" />
+          <ScalarProperty Name="benzer_urunler" ColumnName="benzer_urunler" />
+          <ScalarProperty Name="coksatanlar" ColumnName="coksatanlar" />
+          <ScalarProperty Name="tiklamasayisi" ColumnName="tiklamasayisi" />
+          <ScalarProperty Name="kdv" ColumnName="kdv" />
+          <ScalarProperty Name="desidegeri" ColumnName="desidegeri" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
+          <ScalarProperty Name="adddate" ColumnName="adddate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="supplierID" ColumnName="supplierID" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Suppliers">
+      <EntityTypeMapping TypeName="iakademi_projeModel.tbl_Suppliers">
+        <MappingFragment StoreEntitySet="tbl_Suppliers">
+          <ScalarProperty Name="aktif" ColumnName="aktif" />
+          <ScalarProperty Name="brandname" ColumnName="brandname" />
+          <ScalarProperty Name="supplierID" ColumnName="supplierID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Users">
+      <EntityTypeMapping TypeName="iakademi_projeModel.tbl_Users">
+        <MappingFragment StoreEntitySet="tbl_Users">
+          <ScalarProperty Name="aktif" ColumnName="aktif" />
+          <ScalarProperty Name="adminmi" ColumnName="adminmi" />
+          <ScalarProperty Name="faturaadresi" ColumnName="faturaadresi" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="isimsoyisim" ColumnName="isimsoyisim" />
+          <ScalarProperty Name="parola" ColumnName="parola" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_aktif_urunler">
+      <EntityTypeMapping TypeName="iakademi_projeModel.vw_aktif_urunler">
+        <MappingFragment StoreEntitySet="vw_aktif_urunler">
+          <ScalarProperty Name="resimID" ColumnName="resimID" />
+          <ScalarProperty Name="resimyolu" ColumnName="resimyolu" />
+          <ScalarProperty Name="brandname" ColumnName="brandname" />
+          <ScalarProperty Name="supplierID" ColumnName="supplierID" />
+          <ScalarProperty Name="categoryname" ColumnName="categoryname" />
+          <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+          <ScalarProperty Name="aktif" ColumnName="aktif" />
+          <ScalarProperty Name="notlar" ColumnName="notlar" />
+          <ScalarProperty Name="benzer_urunler" ColumnName="benzer_urunler" />
+          <ScalarProperty Name="coksatanlar" ColumnName="coksatanlar" />
+          <ScalarProperty Name="tiklamasayisi" ColumnName="tiklamasayisi" />
+          <ScalarProperty Name="desidegeri" ColumnName="desidegeri" />
+          <ScalarProperty Name="keywords" ColumnName="keywords" />
+          <ScalarProperty Name="adddate" ColumnName="adddate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="kdv" ColumnName="kdv" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="productcode" ColumnName="productcode" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Orders">
+      <EntityTypeMapping TypeName="iakademi_projeModel.tbl_Orders">
+        <MappingFragment StoreEntitySet="tbl_Orders">
+          <ScalarProperty Name="aktif" ColumnName="aktif" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="invoiceAddress" ColumnName="invoiceAddress" />
+          <ScalarProperty Name="orderGroupGUID" ColumnName="orderGroupGUID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vw_siparislerim">
+      <EntityTypeMapping TypeName="iakademi_projeModel.vw_siparislerim">
+        <MappingFragment StoreEntitySet="vw_siparislerim">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="orderGroupGUID" ColumnName="orderGroupGUID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="kdv" ColumnName="kdv" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_arama">
+      <EntityTypeMapping TypeName="iakademi_projeModel.view_arama">
+        <MappingFragment StoreEntitySet="view_arama">
+          <ScalarProperty Name="ARAMAISMI" ColumnName="ARAMAISMI" />
+          <ScalarProperty Name="MARKA" ColumnName="MARKA" />
+          <ScalarProperty Name="URUN" ColumnName="URUN" />
+          <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Comments">
+      <EntityTypeMapping TypeName="iakademi_projeModel.tbl_Comments">
+        <MappingFragment StoreEntitySet="tbl_Comments">
+          <ScalarProperty Name="comment" ColumnName="comment" />
+          <ScalarProperty Name="productID" ColumnName="productID" />
+          <ScalarProperty Name="yorumID" ColumnName="yorumID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_Mesaj">
+      <EntityTypeMapping TypeName="iakademi_projeModel.tbl_Mesaj">
+        <MappingFragment StoreEntitySet="tbl_Mesaj">
+          <ScalarProperty Name="konu" ColumnName="konu" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="isim" ColumnName="isim" />
+          <ScalarProperty Name="message" ColumnName="message" />
+          <ScalarProperty Name="mesajID" ColumnName="mesajID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

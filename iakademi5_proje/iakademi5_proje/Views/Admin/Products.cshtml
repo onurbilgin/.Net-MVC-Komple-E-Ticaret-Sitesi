@@ -1,0 +1,178 @@
+﻿@model iakademi5_proje.Models.tbl_Products
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+
+    IEnumerable<SelectListItem> cl = ViewData["catlist"] as IEnumerable<SelectListItem>;
+    IEnumerable<SelectListItem> ml = ViewData["marlist"] as IEnumerable<SelectListItem>;
+}
+
+<!-- BEGIN SAMPLE FORM PORTLET-->
+<div class="portlet box green ">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-gift"></i> Ürün Giriş Formu
+        </div>
+        <div class="tools">
+            <a href="" class="collapse">
+            </a>
+            <a href="#portlet-config" data-toggle="modal" class="config">
+            </a>
+            <a href="" class="reload">
+            </a>
+            <a href="" class="remove">
+            </a>
+        </div>
+    </div>
+    <div class="portlet-body form">
+
+        @*enctype = "multipart/form-date"   ->    resim seçerken gerekli *@
+
+        @using (Html.BeginForm("Products", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal", @role = "form" }))
+        {
+        <div class="form-body">
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Ürün Adı </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Ürün Adı" name="productname" required maxlength="100">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Ürün Kodu </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Ürün Kodu" name="productcode" required maxlength="10">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Fiyat </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Fiyat" name="price" required onkeypress="return numbersonly(this, event);">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Kategori Seçiniz</label>
+                <div class="col-md-9">
+                    @Html.DropDownList("categoryID", cl, "Seçiniz", new { @required = "required", @class = "form-control input-lg" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Marka Seçiniz</label>
+                <div class="col-md-9">
+                    @Html.DropDownList("supplierID", ml, "Seçiniz", new { @required = "required", @class = "form-control input-lg" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Stok </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Stok" name="stock" required onkeypress="return numbersonly(this, event);">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">İndirim </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="İndirim" name="discount" onkeypress="return numbersonly(this, event);">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Durum </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Durum" name="status" onkeypress="return numbersonly(this, event);">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Anahtar Kelimeler </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Anahtar Kelimeler" name="keywords" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Desi </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Desi" name="desidegeri" required onkeypress="return numbersonly(this, event);">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Kdv </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Kdv " name="kdv" required onkeypress="return numbersonly(this, event);">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Not </label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control input-lg" placeholder="Not " name="notlar">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label">Resim Seçiniz </label>
+                <div class="col-md-9">
+                    <input type="file" class="form-control input-lg" placeholder="Resim Seçiniz" name="fileuploader" required>
+                    @*multiple -> Bu attribute birden fazla resim seçileceği zaman kullanılır *@
+                </div>
+            </div>
+
+
+
+        </div>
+            <div class="form-actions right1">
+                <button type="button" class="btn default">İptal</button>
+                <button type="submit" class="btn blue">Kaydet</button>
+            </div>
+
+
+        }
+
+    </div>
+</div>
+<!-- END SAMPLE FORM PORTLET-->
+
+<script type="text/javascript">
+
+    function numbersonly(myfield, e, dec) {
+        var key;
+        var keychar;
+
+        if (window.event)
+            key = window.event.keyCode;
+        else if (e)
+            key = e.which;
+        else
+            return true;
+        keychar = String.fromCharCode(key);
+
+        // control keys
+        if ((key == null) || (key == 0) || (key == 8) ||
+(key == 9) || (key == 13) || (key == 27))
+            return true;
+
+            // numbers
+        else if ((("0123456789").indexOf(keychar) > -1))
+            return true;
+
+            // decimal point jump
+        else if (dec && (keychar == ".")) {
+            myfield.form.elements[dec].focus();
+            alert("Lütfen sadece rakam giriniz.");
+            return false;
+        }
+        else {
+            alert("Lütfen sadece rakam giriniz.");
+            return false;
+        }
+
+    }
+</script>
